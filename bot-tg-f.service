@@ -1,0 +1,30 @@
+[Unit]
+Description=Personal futures calculator
+Wants=network-online.target
+After=network-online.target
+StartLimitIntervalSec=60
+StartLimitBurst=5
+
+[Service]
+Type=simple
+User=botfutures
+Group=botfutures
+WorkingDirectory=/opt/bot_tg_f
+ExecStart=/opt/bot_tg_f/.venv/bin/python /opt/bot_tg_f/app.py
+Environment=PYTHONUNBUFFERED=1
+Environment=HOST=127.0.0.1
+Environment=PORT=8000
+Environment=REQUIRE_AUTH=1
+Restart=always
+RestartSec=5
+TimeoutStopSec=20
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+UMask=0077
+MemoryMax=256M
+TasksMax=32
+
+[Install]
+WantedBy=multi-user.target

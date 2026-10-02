@@ -1,0 +1,5 @@
+# Replace calculator.example.com with your domain pointing to the VPS.
+# Add this block to /etc/caddy/Caddyfile; leave other sites intact.
+calculator.example.com {
+    reverse_proxy 127.0.0.1:8000
+}
